@@ -21,9 +21,14 @@ jobs:
       - name: Build application
         run: cd event-driven && mvn -DskipTests=true clean package --projects :${{ inputs.service }} --also-make --batch-mode
 
-      - name: Docker Login
-        run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin
-
+      - name: Login to Docker Hub
+        #run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin
+        uses: docker/login-action@v1
+        with:
+          registry: private-registry-url
+          username: ${{ secrets.USERNAME  }}
+          password: ${{ secrets.PASSWORD }}
+            
       - name: Build the Docker image
         run: docker build . --build-arg JAR_FILE=event-driven/${{ inputs.service }}/target/app.jar -t ret97/fibrcorp-${{ inputs.service }}:test
 

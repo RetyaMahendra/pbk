@@ -21,5 +21,14 @@ jobs:
       - name: Build application
         run: cd event-driven && mvn -DskipTests=true clean package --projects :${{ inputs.service }} --also-make --batch-mode
 
+      - name: Docker Login
+        run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+
+      - name: Build the Docker image
+        run: docker build . --build-arg JAR_FILE=event-driven/${{ inputs.service }}/target/app.jar -t ret97/fibrcorp-${{ inputs.service }}:test
+
+      - name: Docker Push
+        run: docker push ret97/fibrcorp-${{ inputs.service }}:test
+        
       # Build and push docker image
       # docker build . --build-arg JAR_FILE=services/${{ inputs.service }}/target/app.jar -t <tag>

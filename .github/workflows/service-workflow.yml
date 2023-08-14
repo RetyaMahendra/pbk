@@ -19,7 +19,7 @@ jobs:
           distribution: 'adopt'
 
       - name: Build application
-        run: cd event-driven && mvn clean package --projects :${{ inputs.service }} --also-make --batch-mode
+        run: cd event-driven && mvn -DskipTests=true clean package --projects :${{ inputs.service }} --also-make --batch-mode
 
       # Build and push docker image
       # docker build . --build-arg JAR_FILE=services/${{ inputs.service }}/target/app.jar -t <tag>

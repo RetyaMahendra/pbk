@@ -25,7 +25,6 @@ jobs:
         #run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin
         uses: docker/login-action@v1
         with:
-          registry: private-registry-url
           username: ${{ secrets.USERNAME  }}
           password: ${{ secrets.PASSWORD }}
             

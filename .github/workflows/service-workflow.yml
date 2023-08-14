@@ -22,7 +22,7 @@ jobs:
         run: cd event-driven && mvn -DskipTests=true clean package --projects :${{ inputs.service }} --also-make --batch-mode
 
       - name: Docker Login
-        run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+        run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin
 
       - name: Build the Docker image
         run: docker build . --build-arg JAR_FILE=event-driven/${{ inputs.service }}/target/app.jar -t ret97/fibrcorp-${{ inputs.service }}:test

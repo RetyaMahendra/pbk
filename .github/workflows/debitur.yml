@@ -12,5 +12,3 @@ jobs:
     uses: ./.github/workflows/service-workflow.yml
     with:
       service: debitur
-
-#test

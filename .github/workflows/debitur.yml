@@ -1,0 +1,14 @@
+name: debitur
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - event-driven/debitur/**
+      - .github/workflows/debitur.yml
+
+jobs:
+  run:
+    uses: ./.github/workflows/service-workflow.yml
+    with:
+      service: debitur

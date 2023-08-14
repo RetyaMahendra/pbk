@@ -4,6 +4,9 @@ on:
       service:
         required: true
         type: string
+      jar_name:
+        required: true
+        type: string
         
 env:
   USERNAME: ret97

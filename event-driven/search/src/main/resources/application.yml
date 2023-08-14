@@ -1,0 +1,37 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: search-service
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/dbapp?user=poc&password=poc
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  kafka:
+    bootstrap-servers:
+    - LAPTOP-AGNDBVK8.localdomain:9092
+    producer:
+      bootstrap-servers:
+      - LAPTOP-AGNDBVK8.localdomain:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer     
+    consumer:
+      bootstrap-servers:
+      - LAPTOP-AGNDBVK8.localdomain:9092
+      group-id: search
+      auto-offset-reset: latest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        "[spring.json.trusted.packages]": "com.poc"  
+search:
+  orchestrator:
+    search-in-from-inquiry-topic-name: search-in-from-inquiry
+    search-in-from-kredit-topic-name: search-in-from-kredit
+    search-out-to-inquiry-topic-name: search-out-to-inquiry
+    search-out-to-debitur-topic-name: search-out-to-debitur
+    

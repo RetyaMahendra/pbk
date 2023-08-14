@@ -1,0 +1,30 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/dbapp?user=poc&password=poc
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  kafka:
+    producer:
+      bootstrap-servers:
+      - LAPTOP-AGNDBVK8.localdomain:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      bootstrap-servers:
+      - LAPTOP-AGNDBVK8.localdomain:9092
+      group-id: product
+      auto-offset-reset: latest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        "[spring.json.trusted.packages]": "com.poc"
+product:
+  orchestrator:
+    product-out-to-debitur-topic-name: product-out-to-debitur
+    product-in-from-kredit-topic-name: product-in-from-kredit

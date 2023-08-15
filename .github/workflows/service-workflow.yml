@@ -7,12 +7,16 @@ on:
       jar_name:
         required: true
         type: string
+
+env:
+  GCR_TOKEN: ${{ secrets.GCR_TOKEN }}
+  
         
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: test
+    # environment: test
     steps:
       - name: Checkout sources
         uses: actions/checkout@v3
@@ -38,7 +42,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GCR_TOKEN }}
+          password: ${{ env.GCR_TOKEN }}
             
       - name: Build the Docker image
         run: docker build . --build-arg JAR_FILE=event-driven/${{ inputs.service }}/target/${{ inputs.jar_name }} -t ghcr.io/${{ github.repository }}/${{ inputs.service }}:beta

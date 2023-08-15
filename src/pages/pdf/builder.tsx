@@ -85,9 +85,6 @@ const Builder = () => {
         <Button variant='outlined' onClick={handleAppendForms}>
           Add Forms
         </Button>
-        <Button variant='outlined' onClick={handleSubmit(onSubmit)}>
-          Submit
-        </Button>
         <Button variant='outlined' onClick={handleAppendSummary}>
           Add Summary
         </Button>

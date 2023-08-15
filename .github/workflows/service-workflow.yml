@@ -7,11 +7,7 @@ on:
       jar_name:
         required: true
         type: string
-
-env:
-  GCR_TOKEN: ${{ secrets.GCR_TOKEN }}
   
-        
 
 jobs:
   build:
@@ -36,13 +32,15 @@ jobs:
       - name: Login to Docker Registry
         #run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin
         uses: docker/login-action@v2
+        env:
+          GCR_TOKEN: ${{ secrets.GCR_TOKEN }}
         # with:
         #   username: ${{ env.USERNAME }}
         #   password: ${{ env.PASSWORD }}
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ env.GCR_TOKEN }}
+          password: $GCR_TOKEN
             
       - name: Build the Docker image
         run: docker build . --build-arg JAR_FILE=event-driven/${{ inputs.service }}/target/${{ inputs.jar_name }} -t ghcr.io/${{ github.repository }}/${{ inputs.service }}:beta

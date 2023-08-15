@@ -29,7 +29,7 @@ jobs:
       - name: Check File
         run: cd event-driven/${{ inputs.service }}/target && ls -la
         
-      - name: Login to Docker Hub
+      - name: Login to Docker Registry
         #run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin
         uses: docker/login-action@v2
         # with:

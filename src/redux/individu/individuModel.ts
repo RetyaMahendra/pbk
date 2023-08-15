@@ -1,0 +1,38 @@
+export interface Individu {
+  id?: number | undefined;
+  kode_Jenis_Pelapor: string | number | undefined;
+  kode_Pelapor: string | number | undefined;
+  nomor_CIF_Debitur: string | undefined;
+  snapshotDate: string | undefined;
+  nomor_CIF_Lama_Debitur: string | number | undefined;
+  jenis_Identitas: string | number | undefined;
+  nomor_Identitas: string | number | undefined;
+  nama_Sesuai_Identitas: string | undefined;
+  nama_Lengkap: string | undefined;
+  kode_Status_Pendidikan_atau_Gelar_Debitur: string | undefined;
+  jenis_Kelamin: string | undefined;
+  tempat_Lahir: string | undefined;
+  tanggal_Lahir: string | undefined;
+  nama_Gadis_Ibu_Kandung: string | undefined;
+  npwp: string | number | undefined;
+  alamat: string | undefined;
+  kelurahan: string | undefined;
+  kecamatan: string | undefined;
+  kode_Kabupaten_atau_Kota: string | undefined;
+  kode_Pos: string | number | undefined;
+  nomor_Telepon: string | undefined;
+  nomor_Telepon_Seluler: string | undefined;
+  alamat_e_mail: string | undefined;
+  kode_Negara_Domisili: string | undefined;
+  kode_Pekerjaan: string | undefined;
+  tempat_Bekerja: string | undefined;
+  kode_Bidang_Usaha_Tempat_Kerja: string | undefined;
+  alamat_Tempat_Bekerja: string | undefined;
+  kode_Golongan_Debitur: string | undefined;
+  status_Perkawinan_Debitur: string | undefined;
+  kode_Kantor_Cabang: string | number | undefined;
+  operasi_Data: string | undefined;
+  status_delete: string | number | undefined;
+  create_Date: string | undefined;
+  update_Date: string | undefined;
+}

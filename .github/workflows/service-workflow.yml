@@ -44,7 +44,7 @@ jobs:
         # secrets: inherit
             
       - name: Build the Docker image
-        run: docker build . --build-arg JAR_FILE=event-driven/${{ inputs.service }}/target/${{ inputs.jar_name }} -t ghcr.io/${{ github.repository }}/${{ inputs.service }}:beta
+        run: docker build . --build-arg JAR_FILE=event-driven/${{ inputs.service }}/target/${{ inputs.jar_name }} -t ghcr.io/retyamahendra/${{ inputs.service }}:beta
 
       - name: Docker Push
         run: docker push ghcr.io/${{ github.repository }}/${{ inputs.service }}:beta

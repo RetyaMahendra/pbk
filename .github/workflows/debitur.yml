@@ -14,3 +14,5 @@ jobs:
       service: debitur
       jar_name: debitur-0.0.1-SNAPSHOT.jar
     secrets: inherit
+
+#test

@@ -47,7 +47,8 @@ jobs:
         run: docker build . --build-arg JAR_FILE=event-driven/${{ inputs.service }}/target/${{ inputs.jar_name }} -t ghcr.io/retyamahendra/${{ inputs.service }}:beta
 
       - name: Docker Push
-        run: docker push ghcr.io/${{ github.repository }}/${{ inputs.service }}:beta
+        # run: docker push ghcr.io/${{ github.repository }}/${{ inputs.service }}:beta
+        run: docker push ghcr.io/retyamahendra/${{ inputs.service }}:beta
         
       # Build and push docker image
       # docker build . --build-arg JAR_FILE=services/${{ inputs.service }}/target/app.jar -t <tag>
